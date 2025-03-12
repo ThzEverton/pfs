@@ -103,10 +103,11 @@ class UsuarioModel {
         return lista;
     }
 
-    // Método para inserir um novo usuário
     async inserir(nome, email, senha, nivel) {
-        let sql = "INSERT INTO tb_usuario (usu_nome, usu_email, usu_senha, usu_ativo, usu_nivel) VALUES (?, ?, ?, 1, ?)";
-        let valores = [nome, email, senha, nivel];
+        let sql = "INSERT INTO tb_usuario (usu_nome, usu_email, usu_senha, usu_nivel, usu_ativo) VALUES (?, ?, ?, ?, ?)";
+        let valores = [nome, email, senha, nivel, 1]; // Define usu_ativo como 1 e per_id como NULL
+        
+        
 
         let banco = new Database();
         return await banco.ExecutaComando(sql, valores);
